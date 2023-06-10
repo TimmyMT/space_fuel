@@ -1,31 +1,32 @@
 # SpaceFuel
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/space_fuel`. To experiment with that code, run `bin/console` for an interactive prompt.
+Space Fuel is a Ruby gem for calculating the required fuel for space flights.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+You can install the gem by executing the following command:
 
-Install the gem and add to the application's Gemfile by executing:
+    $ gem install space_fuel
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Or add the following line to your project's Gemfile:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+    $ gem 'space_fuel'
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+Then run the bundle install command.
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+require 'space_fuel'
 
-## Development
+ship_mass = 28801
+flight_route = [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]]
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+fuel = SpaceFuel::Calculator.call(ship_mass, flight_route)
+puts "Required fuel: #{fuel} kg"
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Description
 
-## Contributing
+This gem provides a simple and reliable way to calculate the required fuel for space flights based on the flight route and ship mass. It uses predefined values for the calculation based on the action (launch or land) and the gravitational force of the planet.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/space_fuel.
