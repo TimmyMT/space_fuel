@@ -30,3 +30,8 @@ puts "Required fuel: #{fuel} kg"
 
 This gem provides a simple and reliable way to calculate the required fuel for space flights based on the flight route and ship mass. It uses predefined values for the calculation based on the action (launch or land) and the gravitational force of the planet.
 
+## Testing
+You can run tests using the command
+
+    $ rspec
+
