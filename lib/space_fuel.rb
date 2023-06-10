@@ -30,7 +30,7 @@ module SpaceFuel
         directive, gravity = step
     
         fuel = send(:calculate_fuel, @ship_mass, gravity, directive)
-          update_fuel_counters(directive, fuel)
+        update_fuel_counters(directive, fuel)
       end
     end
 
