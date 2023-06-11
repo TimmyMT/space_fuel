@@ -25,26 +25,26 @@ module SpaceFuel
 
     def fuel_by_route
       @flight_route.each do |step|
-        directive, gravity = step
+        action, gravity = step
 
-        calculate_fuel(@ship_mass, gravity, directive)
+        calculate_fuel(@ship_mass, gravity, action)
       end
     end
 
-    def calculate_fuel(ship_mass, gravity, directive)
-      init_fuel = formula(ship_mass, gravity, directive)
+    def calculate_fuel(ship_mass, gravity, action)
+      init_fuel = formula(ship_mass, gravity, action)
       last_fuel = 0
 
       while init_fuel > 40
         @total_fuel += init_fuel if last_fuel != init_fuel
-        init_fuel = formula(init_fuel, gravity, directive)
+        init_fuel = formula(init_fuel, gravity, action)
         @total_fuel += init_fuel
         last_fuel = init_fuel
       end
     end
 
-    def formula(ship_mass, gravity, directive)
-      (ship_mass * gravity * FUEL_STATS[directive][0] - FUEL_STATS[directive][1]).to_i
+    def formula(ship_mass, gravity, action)
+      (ship_mass * gravity * FUEL_STATS[action][0] - FUEL_STATS[action][1]).to_i
     end
   end
 end
