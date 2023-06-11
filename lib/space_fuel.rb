@@ -29,7 +29,7 @@ module SpaceFuel
       @flight_route.each do |step|
         directive, gravity = step
 
-        fuel = send(:calculate_fuel, @ship_mass, gravity, directive)
+        fuel = calculate_fuel(@ship_mass, gravity, directive)
         update_fuel_counters(directive, fuel)
       end
     end
@@ -39,11 +39,7 @@ module SpaceFuel
     end
 
     def update_fuel_counters(directive, fuel)
-      action_method = "update_#{directive}_fuel"
-
-      return unless respond_to?(action_method, true)
-
-      send(action_method, fuel)
+      send("update_#{directive}_fuel", fuel)
     end
 
     def update_launch_fuel(fuel)
